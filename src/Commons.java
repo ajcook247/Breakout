@@ -1,5 +1,6 @@
 // Holds constant values for the player, ball, bricks, and screen.
-public interface Commons {
+public interface Commons 
+{
 	int WIDTH = 300;
 	int HEIGHT = 400;
 	int BOTTOM_EDGE = 390;

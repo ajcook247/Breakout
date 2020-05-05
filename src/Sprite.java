@@ -2,7 +2,8 @@ import java.awt.Image;
 import java.awt.Rectangle;
 
 // Handles any given sprite on screen
-public class Sprite {
+public class Sprite 
+{
 	int x, y;
 	int imageWidth, imageHeight;
 	Image image;
