@@ -25,8 +25,8 @@ public class Ball extends Sprite
 	// Retrieves the image from resources and loads it in
 	private void loadImage()
 	{
-		var i = new ImageIcon("src/resources/Ball.png");
-		image = i.getImage();
+		var icon = new ImageIcon("src/resources/ball.png");
+		image = icon.getImage();
 	}
 	
 	// Sets the ball's coordinates to a default state
