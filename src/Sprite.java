@@ -44,6 +44,12 @@ public class Sprite
 		return imageHeight;
 	}
 	
+	// Gets the image of the sprite
+	Image getImage()
+	{
+		return image;
+	}
+	
 	// Creates a new rectangle position at (x, y) with appropriate width and height
 	Rectangle getRect()
 	{
