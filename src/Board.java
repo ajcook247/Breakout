@@ -31,6 +31,7 @@ public class Board extends JPanel
 		initBoard();
 	}
 	
+	// Initializes the board
 	private void initBoard()
 	{
 		addKeyListener(new TAdapter());
@@ -40,6 +41,7 @@ public class Board extends JPanel
 		gameInit();
 	}
 	
+	// Initializes all of the game pieces
 	private void gameInit()
 	{
 		bricks = new Brick[Commons.N_BRICKS];
@@ -78,6 +80,7 @@ public class Board extends JPanel
 		Toolkit.getDefaultToolkit().sync();
 	}
 	
+	// Draws the game pieces onto the board
 	private void drawObjects(Graphics2D g2d)
 	{
 		g2d.drawImage(ball.getImage(), ball.getX(), ball.getY(),
@@ -96,6 +99,7 @@ public class Board extends JPanel
 		}
 	}
 	
+	// Handles the game ending
 	private void gameFinished(Graphics2D g2d)
 	{
 		var font = new Font("Verdana", Font.BOLD, 18);
@@ -106,6 +110,7 @@ public class Board extends JPanel
 		g2d.drawString(message, Commons.WIDTH - fm.stringWidth(message)/2, Commons.WIDTH/2);
 	}
 	
+	// Class - handles key presses
 	private class TAdapter extends KeyAdapter
 	{
 		@Override
@@ -121,6 +126,7 @@ public class Board extends JPanel
 		}
 	}
 	
+	// Class - handles the game cycles
 	private class GameCycle implements ActionListener
 	{
 		@Override
@@ -130,6 +136,7 @@ public class Board extends JPanel
 		}
 	}
 	
+	// Handles each frame of movement
 	private void doGameCycle()
 	{
 		ball.move();
@@ -138,17 +145,21 @@ public class Board extends JPanel
 		repaint();
 	}
 	
+	// Ends the game
 	private void stopGame()
 	{
 		inGame = false;
 		timer.stop();
 	}
 	
+	// Check for collisions between the ball and other objects
 	private void checkCollision()
 	{
+		// If the ball falls below the board, stop the game
 		if (ball.getRect().getMaxY() > Commons.BOTTOM_EDGE)
 			stopGame();
 		
+		// If all bricks are destroyed, stop the game
 		for (int i = 0, j = 0; i < Commons.N_BRICKS; i++)
 		{
 			if (bricks[i].isDestroyed())
@@ -161,6 +172,7 @@ public class Board extends JPanel
 			}
 		}
 		
+		// Collision between the ball and paddle
 		if ((ball.getRect()).intersects(paddle.getRect()))
 		{
 			int paddleLPos = (int)paddle.getRect().getMinX();
@@ -202,6 +214,7 @@ public class Board extends JPanel
 			}
 		}
 		
+		// Collision between the ball and any brick
 		for (int i = 0; i < Commons.N_BRICKS; i++)
 		{
 			if ((ball.getRect()).intersects(bricks[i].getRect()))
